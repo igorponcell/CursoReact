@@ -58,11 +58,28 @@ function App() {
       setGuessedLetters((actualGuessedLetters) => [...actualGuessedLetters, normalizedLetter]);
     } else {
       setWrongLetters((actualWrongLetters) => [...actualWrongLetters, normalizedLetter]);
+      setGuesses((actualGuesses) => actualGuesses -1);
     }
 
   }
-  
+
+  const cleatLetterStates = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  }
+
+  useEffect(() => {
+    if(guesses <= 0) {
+      cleatLetterStates();
+
+      setGameState(stages[2].name);
+    }
+  }, [guesses])
+
+
   const retry = () => {
+    setScore(0);
+    setGuesses(3);
     setGameState(stages[0].name);
   }
   
