@@ -1,9 +1,11 @@
 import React from 'react'
 import './Gameover.scss'
 
-const Gameover = () => {
+const Gameover = ({retry}) => {
   return (
-    <div>Gameover</div>
+    <div>
+      <button onClick={retry}>Reiniciar</button>
+    </div>
   )
 }
 
